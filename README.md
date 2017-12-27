@@ -6,6 +6,7 @@ A third party DeviceProvider for RGB.NET for Corsair Link devices such as Lighti
 Massiive thanks to...
 
 Darth Affe https://github.com/DarthAffe/RGB.NET/
+
 Zenairo for part of the LNP/CP code, specifically the usb packets.
 
 You can find a example application which syncs all the RGB here - https://github.com/CyanLabs/RGBSync
