@@ -3,7 +3,7 @@ CorsairLink support for RGB.NET
 
 A third party DeviceProvider for RGB.NET for Corsair Link devices such as Lighting Node Pro / Commander Pro using HidSharp 
 
-Massiive thanks to...
+Massive thanks to...
 
 Darth Affe https://github.com/DarthAffe/RGB.NET/
 
