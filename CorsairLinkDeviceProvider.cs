@@ -62,7 +62,10 @@ namespace RGB.NET.Devices.CorsairLink
             // we don't really need this
         }
 
+        public void Dispose()
+        {
 
+        }
     }
 }
 
