@@ -144,10 +144,10 @@ namespace RGB.NET.Devices.CorsairLink
                    c.G, c.G, c.G, c.G, c.G, c.G, c.G, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
             byte[] blue2 = new byte[] {0x00,
-                   0x32, ch, 0x32, 0x32, 0x02, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                   0x32, ch, 0x32, 0x32, 0x02, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
             return new byte[6][] { red1, green1, blue1, red2, green2, blue2 };
         }
