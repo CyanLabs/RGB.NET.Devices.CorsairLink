@@ -111,48 +111,84 @@ namespace RGB.NET.Devices.CorsairLink
 
         }
 
+        /*
+         *  Zenairo
+Zenairo
+3 months ago (edited)
+With three HD120 fans on the first port your red packet would look like this:
+            byte[] red1 = new byte[] {0x00,
+                   0x32, 0x00, 0x00, 0x24, 0x00, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R,
+                   c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c1.R, c2.R, c2.R, c2.R,
+                   c2.R, c2.R, c2.R, c2.R, c2.R, c2.R, c2.R, c2.R, c2.R, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+32 is a lighting change packet, unsure really
+00 means devices on channel 1 (of 2)
+00 means starting at the first light
+24 means going through light 36 (24 in hex is 36 lights because you have 3 HD120 fans with 12 led each)
+00 means red (01 is green, 02 is blue)
+the rest of the values are the red value for lights 1-36
+*/
+
         internal static byte[][] AddChannel(Color c, byte ch = 0x00) //byte 3
         {
+            //0x00, lighting change, channel, 
             byte[] red1 = new byte[] {0x00,
-                   0x32, ch, 0x00, 0x32, 0x00, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                   0x32, ch, 0x00, 0x30, 0x00, c.R, c.R, c.R, c.R, c.R, //5
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //15
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //25
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //35
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //45
+                   c.R, c.R, c.R, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, //48
+                   0x00, 0x00, 0x00, 0x00};
 
             byte[] green1 = new byte[] {0x00,
-                   0x32, ch, 0x00, 0x32, 0x01, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G,
-                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G,
-                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G,
-                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                   0x32, ch, 0x00, 0x30, 0x01, c.G, c.G, c.G, c.G, c.G, //5
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //15
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //25
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //35
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //45
+                   c.G, c.G, c.G, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, //48
+                   0x00, 0x00, 0x00, 0x00};
 
             byte[] blue1 = new byte[] {0x00,
-                   0x32, ch, 0x00, 0x32, 0x02, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
-                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
-                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
-                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-
+                   0x32, ch, 0x00, 0x30, 0x02, c.B, c.B, c.B, c.B, c.B, //5
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //15
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //25
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //35
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //45
+                   c.B, c.B, c.B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, //48
+                   0x00, 0x00, 0x00, 0x00};
+            
             byte[] red2 = new byte[] {0x00,
-                   0x32, ch, 0x32, 0x32, 0x00, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R,
-                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                   0x32, ch, 0x30, 0x30, 0x00, c.R, c.R, c.R, c.R, c.R, //5
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //15
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //25
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //35
+                   c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, c.R, //45
+                   c.R, c.R, c.R, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, //48
+                   0x00, 0x00, 0x00, 0x00};
 
             byte[] green2 = new byte[] {0x00,
-                   0x32, ch, 0x32, 0x32, 0x01, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G,
-                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G,
-                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G,
-                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                   0x32, ch, 0x30, 0x30, 0x01, c.G, c.G, c.G, c.G, c.G, //5
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //15
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //25
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //35
+                   c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, c.G, //45
+                   c.G, c.G, c.G, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, //48
+                   0x00, 0x00, 0x00, 0x00};
 
             byte[] blue2 = new byte[] {0x00,
-                   0x32, ch, 0x32, 0x32, 0x02, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
-                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
-                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B,
-                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+                   0x32, ch, 0x30, 0x30, 0x02, c.B, c.B, c.B, c.B, c.B, //5
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //15
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //25
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //35
+                   c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, c.B, //45
+                   c.B, c.B, c.B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, //48
+                   0x00, 0x00, 0x00, 0x00};
 
             return new byte[6][] { red1, green1, blue1, red2, green2, blue2 };
         }
     }
-
-
 }
 
